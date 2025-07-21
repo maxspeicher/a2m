@@ -216,26 +216,29 @@
         </defs>
     </svg>
 
+    <!-- Shared Header -->
+    <header class="header-base" role="banner" id="main-header">
+        <div class="container-base py-4 flex justify-between items-center">
+            <a href="#hub" class="flex items-center gap-3" aria-label="A²M Home">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
+                    <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
+                </svg>
+                <span class="text-2xl font-bold text-white">A²M</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+                <a href="#hub" class="nav-link" data-page="hub">Start</a>
+                <a href="#products" class="nav-link" data-page="products">Products</a>
+                <a href="#consulting" class="nav-link" data-page="consulting">Consulting</a>
+            </nav>
+            <a href="#contact" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button" id="cta-button">Contact Us</a>
+        </div>
+    </header>
+
     <!-- =================================================================== -->
     <!-- PAGE 1: HUB                                                         -->
     <!-- =================================================================== -->
     <div id="page-hub" class="page-content">
-        <header class="header-base" role="banner">
-            <div class="container-base py-4 flex justify-between items-center">
-                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3" aria-label="A²M Home">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
-                        <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
-                    </svg>
-                    <span class="text-2xl font-bold text-white">A²M</span>
-                </a>
-                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
-                    <a href="#uvp-hub" class="nav-link">Our Edge</a>
-                    <a href="#team-hub" class="nav-link">Our Team</a>
-                </nav>
-                <a href="#contact-hub" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button">Contact Us</a>
-            </div>
-        </header>
         <main>
             <section class="py-32 md:py-40 parallax-container">
                 <div class="parallax-bg"></div>
@@ -254,7 +257,7 @@
                             path that's right for you.</p>
                     </div>
                     <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                        <a href="#" onclick="showPage('page-products')"
+                        <a href="#products"
                             class="choice-card block bg-gradient-to-br from-amber-500 to-orange-600 p-8 md:p-10 rounded-2xl text-white">
                             <h3 class="text-2xl font-bold mb-3">AI Products & Services</h3>
                             <p class="opacity-90 mb-6">Develop custom AI-powered services, APIs, or full MVP products
@@ -266,7 +269,7 @@
                                     <path d="m12 5 7 7-7 7" />
                                 </svg></div>
                         </a>
-                        <a href="#" onclick="showPage('page-consulting')"
+                        <a href="#consulting"
                             class="choice-card block bg-gradient-to-br from-indigo-500 to-purple-600 p-8 md:p-10 rounded-2xl text-white">
                             <h3 class="text-2xl font-bold mb-3">Boutique Consulting</h3>
                             <p class="opacity-90 mb-6">Leverage our strategic expertise for AI feasibility studies,
@@ -375,22 +378,6 @@
     <!-- PAGE 2: CONSULTING                                                  -->
     <!-- =================================================================== -->
     <div id="page-consulting" class="page-content">
-        <header class="header-base" role="banner">
-            <div class="container-base py-4 flex justify-between items-center">
-                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3" aria-label="A²M Home">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
-                        <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
-                    </svg>
-                    <span class="text-2xl font-bold text-white">A²M</span>
-                </a>
-                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Consulting navigation">
-                    <a href="#services-consulting" class="nav-link">Services</a>
-                    <a href="#process-consulting" class="nav-link">Process</a>
-                </nav>
-                <a href="#contact-consulting" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button">Book a Consultation</a>
-            </div>
-        </header>
         <main>
             <section class="py-32 md:py-40 text-center">
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">Boutique Consulting</p>
@@ -493,22 +480,6 @@
     <!-- PAGE 3: PRODUCTS                                                    -->
     <!-- =================================================================== -->
     <div id="page-products" class="page-content">
-        <header class="header-base" role="banner">
-            <div class="container-base py-4 flex justify-between items-center">
-                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3" aria-label="A²M Home">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
-                        <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
-                    </svg>
-                    <span class="text-2xl font-bold text-white">A²M</span>
-                </a>
-                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Products navigation">
-                    <a href="#offering-products" class="nav-link">What We Build</a>
-                    <a href="#differentiators-products" class="nav-link">Our Edge</a>
-                </nav>
-                <a href="#contact-products" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button">Start a Project</a>
-            </div>
-        </header>
         <main>
             <section class="py-32 md:py-40 text-center">
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">AI Products & Services</p>
@@ -591,7 +562,7 @@
     <!-- Shared Footer -->
     <footer class="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
         <div class="container mx-auto px-6 py-12 text-center">
-            <a href="#" onclick="showPage('page-hub')" class="flex items-center justify-center gap-3 mb-4">
+            <a href="#hub" class="flex items-center justify-center gap-3 mb-4">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
                     <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
@@ -607,20 +578,79 @@
     </footer>
 
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId)?.classList.add('active');
+        // Hash routing configuration
+        const routes = {
+            'hub': 'page-hub',
+            'products': 'page-products', 
+            'consulting': 'page-consulting'
+        };
 
-            const body = document.body;
-            body.classList.remove('theme-hub', 'theme-consulting', 'theme-products');
-            if (pageId === 'page-products') {
-                body.classList.add('theme-products');
-            } else if (pageId === 'page-consulting') {
-                body.classList.add('theme-consulting');
-            } else {
-                body.classList.add('theme-hub');
+        const pageConfig = {
+            'page-hub': {
+                theme: 'theme-hub',
+                ctaText: 'Contact Us',
+                ctaHref: '#contact'
+            },
+            'page-products': {
+                theme: 'theme-products',
+                ctaText: 'Start a Project',
+                ctaHref: '#contact'
+            },
+            'page-consulting': {
+                theme: 'theme-consulting',
+                ctaText: 'Book a Consultation',
+                ctaHref: '#contact'
             }
+        };
+
+        function showPage(pageId) {
+            // Handle both hash names and page IDs
+            const actualPageId = pageId.startsWith('page-') ? pageId : routes[pageId] || 'page-hub';
+            
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            document.getElementById(actualPageId)?.classList.add('active');
+
+            const config = pageConfig[actualPageId];
+            if (config) {
+                // Update theme
+                const body = document.body;
+                body.classList.remove('theme-hub', 'theme-consulting', 'theme-products');
+                body.classList.add(config.theme);
+
+                // Update CTA button
+                const ctaButton = document.getElementById('cta-button');
+                if (ctaButton) {
+                    ctaButton.textContent = config.ctaText;
+                    ctaButton.setAttribute('href', config.ctaHref);
+                }
+
+                // Update navigation active states
+                updateNavigation(pageId);
+            }
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateNavigation(currentPage) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current page link
+            const activeLink = document.querySelector(`[data-page="${currentPage}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        function handleHashChange() {
+            const hash = window.location.hash.slice(1) || 'hub'; // Remove # and default to hub
+            showPage(hash);
+        }
+
+        function navigateToPage(pageName) {
+            window.location.hash = pageName;
         }
 
         // Optimized event handling with debouncing
@@ -640,9 +670,13 @@
         document.addEventListener('click', (e) => {
             if (e.target.matches('[data-page]')) {
                 e.preventDefault();
-                showPage(e.target.dataset.page);
+                navigateToPage(e.target.dataset.page);
             }
         });
+
+        // Hash change listener
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('load', handleHashChange);
 
         document.addEventListener('DOMContentLoaded', () => {
             const parallaxBg = document.querySelector('.parallax-bg');
@@ -656,8 +690,8 @@
                 window.addEventListener('scroll', handleScroll, { passive: true });
             }
             
-            // Set the initial theme correctly
-            showPage('page-hub');
+            // Handle initial page load
+            handleHashChange();
 
             // Lazy load Lucide icons
             if (typeof lucide !== 'undefined') {
