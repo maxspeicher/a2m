@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A²M | AI Beyond Just ChatGPT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="a2m.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* --- Base and Theming Variables --- */
+        :root {
+            --font-main: 'Inter', sans-serif;
+        }
+
+        /* Default Theme: Hub (Teal/Cyan) */
+        .theme-hub {
+            --color-bg: #0f172a;
+            /* bg-slate-900 */
+            --color-bg-secondary: #1e293b;
+            /* bg-slate-800 */
+            --color-text: #94a3b8;
+            /* text-slate-400 */
+            --color-text-heading: #f8fafc;
+            /* text-slate-50 */
+            --color-primary: #22d3ee;
+            /* cyan-400 */
+            --color-secondary: #06b6d4;
+            /* cyan-500 */
+            --color-border: #334155;
+            /* slate-700 */
+            --logo-url: url(#logoGradientHub);
+        }
+
+        /* Consulting Theme Override (Purple/Indigo) */
+        .theme-consulting {
+            --color-bg: #111827;
+            --color-bg-secondary: #1F2937;
+            --color-text: #D1D5DB;
+            --color-text-heading: #F9FAFB;
+            --color-primary: #6366F1;
+            --color-secondary: #9333EA;
+            --color-border: #374151;
+            --logo-url: url(#logoGradientConsulting);
+        }
+
+        /* Products Theme Override (Yellow/Orange) */
+        .theme-products {
+            --color-bg: #18181b;
+            --color-bg-secondary: #27272a;
+            --color-text: #a1a1aa;
+            --color-text-heading: #f9fafb;
+            --color-primary: #f59e0b;
+            --color-secondary: #ea580c;
+            --color-border: #3f3f46;
+            --logo-url: url(#logoGradientProducts);
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            transition: background-color 0.4s ease;
+        }
+
+        /* --- Utility Classes --- */
+        .gradient-text {
+            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.15 !important;
+        }
+
+        .gradient-bg {
+            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+        }
+
+        .logo-path {
+            stroke: var(--logo-url);
+        }
+
+        .icon-color {
+            color: var(--color-primary);
+        }
+
+        /* --- Animations & Transitions --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Page Structure --- */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* --- Component Styles --- */
+        .global-nav a.active {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .choice-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .choice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150%;
+            background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body class="theme-hub">
+    <!-- SVG Gradients Definition -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <linearGradient id="logoGradientHub" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#22d3ee" />
+                <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+            <linearGradient id="logoGradientConsulting" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6366F1" />
+                <stop offset="100%" stop-color="#9333EA" />
+            </linearGradient>
+            <linearGradient id="logoGradientProducts" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#ea580c" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- =================================================================== -->
+    <!-- PAGE 1: HUB                                                         -->
+    <!-- =================================================================== -->
+    <div id="page-hub" class="page-content">
+        <header class="bg-slate-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-700">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
+                        <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
+                    </svg>
+                    <span class="text-2xl font-bold text-white">A²M</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8"><a href="#uvp-hub"
+                        class="text-slate-400 hover:text-white">Our Edge</a><a href="#team-hub"
+                        class="text-slate-400 hover:text-white">Our Team</a></nav>
+                <a href="#contact-hub" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg">Contact Us</a>
+            </div>
+        </header>
+        <main>
+            <section class="py-32 md:py-40 parallax-container">
+                <div class="parallax-bg"></div>
+                <div class="container mx-auto px-6 text-center relative z-10">
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 gradient-text">AI Beyond Just
+                        ChatGPT</h1>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">We build sophisticated,
+                        first-principle AI products and provide elite consulting for your most complex challenges.</p>
+                </div>
+            </section>
+            <section id="offering-hub" class="py-20 md:py-24 bg-slate-900">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How can we help you?</h2>
+                        <p class="text-slate-400 text-lg">We offer two core services tailored to your needs. Explore the
+                            path that's right for you.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                        <a href="#" onclick="showPage('page-products')"
+                            class="choice-card block bg-gradient-to-br from-amber-500 to-orange-600 p-8 md:p-10 rounded-2xl text-white">
+                            <h3 class="text-2xl font-bold mb-3">AI Products & Services</h3>
+                            <p class="opacity-90 mb-6">Develop custom AI-powered services, APIs, or full MVP products
+                                from 0 to 1, engineered for accuracy, robustness, and scale.</p>
+                            <div class="font-semibold flex items-center">Explore Product Development <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="ml-2">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg></div>
+                        </a>
+                        <a href="#" onclick="showPage('page-consulting')"
+                            class="choice-card block bg-gradient-to-br from-indigo-500 to-purple-600 p-8 md:p-10 rounded-2xl text-white">
+                            <h3 class="text-2xl font-bold mb-3">Boutique Consulting</h3>
+                            <p class="opacity-90 mb-6">Leverage our strategic expertise for AI feasibility studies,
+                                custom model integration, and digital transformation at any level of your organization.
+                            </p>
+                            <div class="font-semibold flex items-center">Discover Consulting Services <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" class="ml-2">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg></div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section id="uvp-hub" class="py-20 md:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Unique Edge</h2>
+                        <p class="text-slate-400 text-lg">Three PhDs with award-winning research and elite industry
+                            experience. We don't just build chatbots—we create sophisticated AI solutions others can't.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                            <div class="mb-4"><i data-lucide="shield" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">PhD-Level AI Expertise</h3>
+                            <p class="text-slate-400">Published researchers with Best Paper Awards at world-class
+                                conferences. We understand AI at the deepest level, not just surface-level
+                                implementations.</p>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                            <div class="mb-4"><i data-lucide="wrench" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">Beyond Chatbots & APIs</h3>
+                            <p class="text-slate-400">While others build more chatbots, we tackle neuro-symbolic AI,
+                                custom models, and complex problems that require true scientific understanding.</p>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                            <div class="mb-4"><i data-lucide="package" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">Academic Rigor Meets Product Excellence</h3>
+                            <p class="text-slate-400">Professor + industry leaders with experience at DATEV, BESTSECRET,
+                                and C&A. We combine research depth with real-world product expertise.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="team-hub" class="py-20 md:py-24 bg-slate-800">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Founded by <span
+                                class="gradient-text">Recognized Experts</span></h2>
+                        <p class="text-slate-400 text-lg">Our leadership team combines decades of award-winning academic
+                            research with high-level industry experience.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <div class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700"><img
+                                src="https://placehold.co/128x128/1e293b/22d3ee?text=AB"
+                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500">
+                            <h3 class="font-bold text-lg text-white">Prof. Dr. Andreas Both</h3>
+                            <p class="gradient-text font-semibold mb-2">CEO</p>
+                            <p class="text-sm text-slate-400">Full Professor of CS at HTWK Leipzig, leading research in
+                                applied AI & SWE. Former Head of Architecture at DATEV.</p>
+                        </div>
+                        <div class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700"><img
+                                src="https://placehold.co/128x128/1e293b/22d3ee?text=AP"
+                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500">
+                            <h3 class="font-bold text-lg text-white">Dr. Aleksandr Perevalov</h3>
+                            <p class="gradient-text font-semibold mb-2">CTO</p>
+                            <p class="text-sm text-slate-400">PhD in CS with expertise in conversational agents using
+                                LMs and knowledge graphs for complex information retrieval.</p>
+                        </div>
+                        <div class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700"><img
+                                src="https://placehold.co/128x128/1e293b/22d3ee?text=MS"
+                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500">
+                            <h3 class="font-bold text-lg text-white">Dr.-Ing. Maximilian Speicher</h3>
+                            <p class="gradient-text font-semibold mb-2">CPO</p>
+                            <p class="text-sm text-slate-400">PhD in CS (ML for UX). Director of Product Design at
+                                BESTSECRET, former UX Manager at C&A.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="py-20 md:py-24">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to build the future?</h2>
+                    <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-10">Let's discuss how our unique blend of
+                        research-grade expertise and product-focused execution can help you achieve your goals.</p>
+                    <button
+                        class="gradient-bg text-white font-bold px-10 py-5 rounded-lg text-lg hover:scale-105 transition-transform">Get
+                        In Touch</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- PAGE 2: CONSULTING                                                  -->
+    <!-- =================================================================== -->
+    <div id="page-consulting" class="page-content">
+        <header class="bg-gray-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-700">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3"><svg width="32" height="32"
+                        viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
+                        <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
+                    </svg><span class="text-2xl font-bold text-white">A²M</span></a>
+                <nav class="hidden md:flex items-center space-x-8"><a href="#services-consulting"
+                        class="text-gray-400 hover:text-white">Services</a><a href="#process-consulting"
+                        class="text-gray-400 hover:text-white">Process</a></nav>
+                <a href="#contact-consulting" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg">Book a
+                    Consultation</a>
+            </div>
+        </header>
+        <main class="pt-24">
+            <section class="py-20 md:py-32 text-center">
+                <p class="text-white font-semibold uppercase tracking-wider mb-4">Boutique Consulting</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">Strategic AI & Product Leadership
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">From C-Suite strategy to product team
+                    execution, we provide the expert guidance to navigate digital transformation.</p>
+            </section>
+            <section id="services-consulting" class="py-20 md:py-24 bg-gray-800">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Consulting Services</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
+                            <div class="mb-4"><i data-lucide="compass" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">AI Strategy & Feasibility</h3>
+                            <p class="text-gray-400">Assess opportunities, define roadmaps, and align your business
+                                goals with the potential of AI.</p>
+                        </div>
+                        <div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
+                            <div class="mb-4"><i data-lucide="sparkles" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">Custom Model Integration</h3>
+                            <p class="text-gray-400">Go beyond off-the-shelf solutions by integrating bespoke models for
+                                your unique data.</p>
+                        </div>
+                        <div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
+                            <div class="mb-4"><i data-lucide="workflow" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">Digital Transformation</h3>
+                            <p class="text-gray-400">Expert guidance for leadership on leveraging technology to innovate
+                                and gain a competitive edge.</p>
+                        </div>
+                        <div class="bg-gray-900 p-8 rounded-lg border border-gray-700">
+                            <div class="mb-4"><i data-lucide="rocket" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">0→1 Product Development</h3>
+                            <p class="text-gray-400">Conceptualize, define, and design new products from idea to a
+                                testable MVP.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="process-consulting" class="py-20 md:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Collaborative Process</h2>
+                    </div>
+                    <div class="max-w-4xl mx-auto grid md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4">
+                            <div
+                                class="flex items-center justify-center w-16 h-16 bg-gray-800 border-2 border-indigo-500 rounded-full mx-auto text-indigo-400 font-bold text-2xl">
+                                1</div>
+                            <h3 class="mt-4 font-bold text-white">Discover</h3>
+                            <p class="text-gray-400 text-sm">Deep dive analysis to understand your goals, data, and
+                                landscape.</p>
+                        </div>
+                        <div class="p-4">
+                            <div
+                                class="flex items-center justify-center w-16 h-16 bg-gray-800 border-2 border-indigo-500 rounded-full mx-auto text-indigo-400 font-bold text-2xl">
+                                2</div>
+                            <h3 class="mt-4 font-bold text-white">Strategize</h3>
+                            <p class="text-gray-400 text-sm">Co-create a strategic roadmap with clear objectives and an
+                                actionable plan.</p>
+                        </div>
+                        <div class="p-4">
+                            <div
+                                class="flex items-center justify-center w-16 h-16 bg-gray-800 border-2 border-indigo-500 rounded-full mx-auto text-indigo-400 font-bold text-2xl">
+                                3</div>
+                            <h3 class="mt-4 font-bold text-white">Implement</h3>
+                            <p class="text-gray-400 text-sm">Guide the implementation, ensuring the strategic vision is
+                                executed faithfully.</p>
+                        </div>
+                        <div class="p-4">
+                            <div
+                                class="flex items-center justify-center w-16 h-16 bg-gray-800 border-2 border-indigo-500 rounded-full mx-auto text-indigo-400 font-bold text-2xl">
+                                4</div>
+                            <h3 class="mt-4 font-bold text-white">Scale</h3>
+                            <p class="text-gray-400 text-sm">Ensure a smooth handover and provide support, including
+                                sourcing engineering resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="py-20 md:py-24 bg-gray-800">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's shape your strategy.</h2>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Schedule a complimentary consultation to
+                        discuss your digital and AI transformation.</p><button
+                        class="gradient-bg text-white font-bold px-10 py-5 rounded-lg text-lg hover:scale-105 transition-transform">Book
+                        a Free Consultation</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- PAGE 3: PRODUCTS                                                    -->
+    <!-- =================================================================== -->
+    <div id="page-products" class="page-content">
+        <header class="bg-zinc-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-zinc-700">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3"><svg width="32" height="32"
+                        viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
+                        <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
+                    </svg><span class="text-2xl font-bold text-white">A²M</span></a>
+                <nav class="hidden md:flex items-center space-x-8"><a href="#offering-products"
+                        class="text-zinc-400 hover:text-white">What We Build</a><a href="#differentiators-products"
+                        class="text-zinc-400 hover:text-white">Our Edge</a></nav>
+                <a href="#contact-products" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg">Start a
+                    Project</a>
+            </div>
+        </header>
+        <main class="pt-24">
+            <section class="py-20 md:py-32 text-center">
+                <p class="text-white font-semibold uppercase tracking-wider mb-4">AI Products & Services</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">From Zero to One, Beyond the Hype
+                </h1>
+                <p class="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto">We specialize in the 0→1 development of
+                    sophisticated AI products, turning complex ideas into testable prototypes and powerful MVPs.</p>
+            </section>
+            <section id="offering-products" class="py-20 md:py-24 bg-zinc-800">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What We Build</h2>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <div class="bg-zinc-900 p-8 rounded-lg border border-zinc-700">
+                            <div class="mb-4"><i data-lucide="code" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">Custom AI Services & APIs</h3>
+                            <p class="text-zinc-400">Bespoke, high-performance APIs that act as the intelligent core for
+                                your new or existing applications.</p>
+                        </div>
+                        <div class="bg-zinc-900 p-8 rounded-lg border border-zinc-700">
+                            <div class="mb-4"><i data-lucide="layout-grid" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">End-User Product MVPs</h3>
+                            <p class="text-zinc-400">We rapidly design, architect, and build a minimum viable product to
+                                test your market and secure investment.</p>
+                        </div>
+                        <div class="bg-zinc-900 p-8 rounded-lg border border-zinc-700">
+                            <div class="mb-4"><i data-lucide="edit" class="icon-color"
+                                    style="width: 32px; height: 32px;"></i></div>
+                            <h3 class="font-bold text-xl text-white mb-2">Development for Clients</h3>
+                            <p class="text-zinc-400">We act as your dedicated AI product team, delivering a
+                                fully-realized prototype or MVP.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="differentiators-products" class="py-20 md:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Technical Edge</h2>
+                    </div>
+                    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                            <h3 class="font-bold text-xl text-white mb-2 gradient-text">Neuro-Symbolic AI</h3>
+                            <p class="text-zinc-400">Combining LLMs with knowledge graphs to create systems that can
+                                reason and explain their conclusions.</p>
+                        </div>
+                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                            <h3 class="font-bold text-xl text-white mb-2 gradient-text">First-Principle Models</h3>
+                            <p class="text-zinc-400">We build from a deeper understanding, resulting in more accurate,
+                                robust, and defensible models.</p>
+                        </div>
+                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                            <h3 class="font-bold text-xl text-white mb-2 gradient-text">Complex Problem Solving</h3>
+                            <p class="text-zinc-400">Our expertise is in tackling novel challenges that don't have
+                                off-the-shelf solutions.</p>
+                        </div>
+                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                            <h3 class="font-bold text-xl text-white mb-2 gradient-text">Prototype to MVP</h3>
+                            <p class="text-zinc-400">We manage the entire pre-coding lifecycle: from ideation to a
+                                testable prototype ready for engineering.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="py-20 md:py-24 bg-zinc-800">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Have an idea for an AI product?</h2>
+                    <p class="text-zinc-400 text-lg max-w-2xl mx-auto mb-10">Let's talk. We can help you validate,
+                        architect, and prototype your vision.</p><button
+                        class="gradient-bg text-white font-bold px-10 py-5 rounded-lg text-lg hover:scale-105 transition-transform">Start
+                        Your Project</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Shared Footer -->
+    <footer class="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <a href="#" onclick="showPage('page-hub')" class="flex items-center justify-center gap-3 mb-4">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
+                    <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
+                </svg>
+                <span class="text-xl font-bold text-white">A²M</span>
+            </a>
+            <div class="flex justify-center space-x-6 my-6">
+                <a href="#" class="text-[var(--color-text)] hover:text-white">Twitter</a>
+                <a href="#" class="text-[var(--color-text)] hover:text-white">LinkedIn</a>
+            </div>
+            <p class="text-sm text-gray-500">&copy; 2024 A²M. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId)?.classList.add('active');
+
+            const body = document.body;
+            body.classList.remove('theme-hub', 'theme-consulting', 'theme-products');
+            if (pageId === 'page-products') {
+                body.classList.add('theme-products');
+            } else if (pageId === 'page-consulting') {
+                body.classList.add('theme-consulting');
+            } else {
+                body.classList.add('theme-hub');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            if (parallaxBg) {
+                window.addEventListener('scroll', () => {
+                    if (document.getElementById('page-hub').classList.contains('active')) {
+                        parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
+                    }
+                });
+            }
+            // Set the initial theme correctly
+            showPage('page-hub');
+
+            // Initialize Lucide icons
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
