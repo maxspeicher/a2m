@@ -9,7 +9,7 @@
     <link rel="icon" href="a2m.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         /* --- Base and Theming Variables --- */
@@ -20,19 +20,16 @@
         /* Default Theme: Hub (Teal/Cyan) */
         .theme-hub {
             --color-bg: #0f172a;
-            /* bg-slate-900 */
             --color-bg-secondary: #1e293b;
-            /* bg-slate-800 */
+            --color-bg-tertiary: #334155;
             --color-text: #94a3b8;
-            /* text-slate-400 */
+            --color-text-muted: #64748b;
             --color-text-heading: #f8fafc;
-            /* text-slate-50 */
             --color-primary: #22d3ee;
-            /* cyan-400 */
             --color-secondary: #06b6d4;
-            /* cyan-500 */
             --color-border: #334155;
-            /* slate-700 */
+            --color-hover: #e2e8f0;
+            --header-bg: rgba(15, 23, 42, 0.8);
             --logo-url: url(#logoGradientHub);
         }
 
@@ -40,11 +37,15 @@
         .theme-consulting {
             --color-bg: #111827;
             --color-bg-secondary: #1F2937;
+            --color-bg-tertiary: #374151;
             --color-text: #D1D5DB;
+            --color-text-muted: #9CA3AF;
             --color-text-heading: #F9FAFB;
             --color-primary: #6366F1;
             --color-secondary: #9333EA;
             --color-border: #374151;
+            --color-hover: #F3F4F6;
+            --header-bg: rgba(17, 24, 39, 0.8);
             --logo-url: url(#logoGradientConsulting);
         }
 
@@ -52,11 +53,15 @@
         .theme-products {
             --color-bg: #18181b;
             --color-bg-secondary: #27272a;
+            --color-bg-tertiary: #3f3f46;
             --color-text: #a1a1aa;
+            --color-text-muted: #71717a;
             --color-text-heading: #f9fafb;
             --color-primary: #f59e0b;
             --color-secondary: #ea580c;
             --color-border: #3f3f46;
+            --color-hover: #f4f4f5;
+            --header-bg: rgba(24, 24, 27, 0.8);
             --logo-url: url(#logoGradientProducts);
         }
 
@@ -69,7 +74,7 @@
 
         /* --- Utility Classes --- */
         .gradient-text {
-            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -77,7 +82,7 @@
         }
 
         .gradient-bg {
-            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
         }
 
         .logo-path {
@@ -86,6 +91,52 @@
 
         .icon-color {
             color: var(--color-primary);
+        }
+
+        /* Optimized common styles */
+        .header-base {
+            background: var(--header-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-link {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-hover);
+        }
+
+        .card-base {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .container-base {
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            max-width: 80rem;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 0;
+            }
         }
 
         /* --- Animations & Transitions --- */
@@ -169,19 +220,20 @@
     <!-- PAGE 1: HUB                                                         -->
     <!-- =================================================================== -->
     <div id="page-hub" class="page-content">
-        <header class="bg-slate-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-700">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <header class="header-base" role="banner">
+            <div class="container-base py-4 flex justify-between items-center">
+                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3" aria-label="A²M Home">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
                         <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
                     </svg>
                     <span class="text-2xl font-bold text-white">A²M</span>
                 </a>
-                <nav class="hidden md:flex items-center space-x-8"><a href="#uvp-hub"
-                        class="text-slate-400 hover:text-white">Our Edge</a><a href="#team-hub"
-                        class="text-slate-400 hover:text-white">Our Team</a></nav>
-                <a href="#contact-hub" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg">Contact Us</a>
+                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+                    <a href="#uvp-hub" class="nav-link">Our Edge</a>
+                    <a href="#team-hub" class="nav-link">Our Team</a>
+                </nav>
+                <a href="#contact-hub" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button">Contact Us</a>
             </div>
         </header>
         <main>
@@ -239,28 +291,28 @@
                         </p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                        <article class="card-base">
                             <div class="mb-4"><i data-lucide="shield" class="icon-color"
-                                    style="width: 32px; height: 32px;"></i></div>
+                                    style="width: 32px; height: 32px;" aria-hidden="true"></i></div>
                             <h3 class="font-bold text-xl text-white mb-2">PhD-Level AI Expertise</h3>
-                            <p class="text-slate-400">Published researchers with Best Paper Awards at world-class
+                            <p class="text-[var(--color-text)]">Published researchers with Best Paper Awards at world-class
                                 conferences. We understand AI at the deepest level, not just surface-level
                                 implementations.</p>
-                        </div>
-                        <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                        </article>
+                        <article class="card-base">
                             <div class="mb-4"><i data-lucide="wrench" class="icon-color"
-                                    style="width: 32px; height: 32px;"></i></div>
+                                    style="width: 32px; height: 32px;" aria-hidden="true"></i></div>
                             <h3 class="font-bold text-xl text-white mb-2">Beyond Chatbots & APIs</h3>
-                            <p class="text-slate-400">While others build more chatbots, we tackle neuro-symbolic AI,
+                            <p class="text-[var(--color-text)]">While others build more chatbots, we tackle neuro-symbolic AI,
                                 custom models, and complex problems that require true scientific understanding.</p>
-                        </div>
-                        <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                        </article>
+                        <article class="card-base">
                             <div class="mb-4"><i data-lucide="package" class="icon-color"
-                                    style="width: 32px; height: 32px;"></i></div>
+                                    style="width: 32px; height: 32px;" aria-hidden="true"></i></div>
                             <h3 class="font-bold text-xl text-white mb-2">Academic Rigor Meets Product Excellence</h3>
-                            <p class="text-slate-400">Professor + industry leaders with experience at DATEV, BESTSECRET,
+                            <p class="text-[var(--color-text)]">Professor + industry leaders with experience at DATEV, BESTSECRET,
                                 and C&A. We combine research depth with real-world product expertise.</p>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -273,30 +325,36 @@
                             research with high-level industry experience.</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <div class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700"><img
-                                src="https://placehold.co/128x128/1e293b/22d3ee?text=AB"
-                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500">
+                        <article class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700">
+                            <img src="https://placehold.co/128x128/1e293b/22d3ee?text=AB"
+                                alt="Portrait of Prof. Dr. Andreas Both, CEO of A²M"
+                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500"
+                                loading="lazy">
                             <h3 class="font-bold text-lg text-white">Prof. Dr. Andreas Both</h3>
-                            <p class="gradient-text font-semibold mb-2">CEO</p>
+                            <p class="gradient-text font-semibold mb-2" role="text">CEO</p>
                             <p class="text-sm text-slate-400">Full Professor of CS at HTWK Leipzig, leading research in
                                 applied AI & SWE. Former Head of Architecture at DATEV.</p>
-                        </div>
-                        <div class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700"><img
-                                src="https://placehold.co/128x128/1e293b/22d3ee?text=AP"
-                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500">
+                        </article>
+                        <article class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700">
+                            <img src="https://placehold.co/128x128/1e293b/22d3ee?text=AP"
+                                alt="Portrait of Dr. Aleksandr Perevalov, CTO of A²M"
+                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500"
+                                loading="lazy">
                             <h3 class="font-bold text-lg text-white">Dr. Aleksandr Perevalov</h3>
-                            <p class="gradient-text font-semibold mb-2">CTO</p>
+                            <p class="gradient-text font-semibold mb-2" role="text">CTO</p>
                             <p class="text-sm text-slate-400">PhD in CS with expertise in conversational agents using
                                 LMs and knowledge graphs for complex information retrieval.</p>
-                        </div>
-                        <div class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700"><img
-                                src="https://placehold.co/128x128/1e293b/22d3ee?text=MS"
-                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500">
+                        </article>
+                        <article class="bg-slate-900 p-6 rounded-lg text-center border border-slate-700">
+                            <img src="https://placehold.co/128x128/1e293b/22d3ee?text=MS"
+                                alt="Portrait of Dr.-Ing. Maximilian Speicher, CPO of A²M"
+                                class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-cyan-500"
+                                loading="lazy">
                             <h3 class="font-bold text-lg text-white">Dr.-Ing. Maximilian Speicher</h3>
-                            <p class="gradient-text font-semibold mb-2">CPO</p>
+                            <p class="gradient-text font-semibold mb-2" role="text">CPO</p>
                             <p class="text-sm text-slate-400">PhD in CS (ML for UX). Director of Product Design at
                                 BESTSECRET, former UX Manager at C&A.</p>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -317,22 +375,24 @@
     <!-- PAGE 2: CONSULTING                                                  -->
     <!-- =================================================================== -->
     <div id="page-consulting" class="page-content">
-        <header class="bg-gray-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-700">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3"><svg width="32" height="32"
-                        viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <header class="header-base" role="banner">
+            <div class="container-base py-4 flex justify-between items-center">
+                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3" aria-label="A²M Home">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
                         <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
-                    </svg><span class="text-2xl font-bold text-white">A²M</span></a>
-                <nav class="hidden md:flex items-center space-x-8"><a href="#services-consulting"
-                        class="text-gray-400 hover:text-white">Services</a><a href="#process-consulting"
-                        class="text-gray-400 hover:text-white">Process</a></nav>
-                <a href="#contact-consulting" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg">Book a
-                    Consultation</a>
+                    </svg>
+                    <span class="text-2xl font-bold text-white">A²M</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Consulting navigation">
+                    <a href="#services-consulting" class="nav-link">Services</a>
+                    <a href="#process-consulting" class="nav-link">Process</a>
+                </nav>
+                <a href="#contact-consulting" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button">Book a Consultation</a>
             </div>
         </header>
-        <main class="pt-24">
-            <section class="py-20 md:py-32 text-center">
+        <main>
+            <section class="py-32 md:py-40 text-center">
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">Boutique Consulting</p>
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">Strategic AI & Product Leadership
                 </h1>
@@ -433,22 +493,24 @@
     <!-- PAGE 3: PRODUCTS                                                    -->
     <!-- =================================================================== -->
     <div id="page-products" class="page-content">
-        <header class="bg-zinc-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-zinc-700">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3"><svg width="32" height="32"
-                        viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <header class="header-base" role="banner">
+            <div class="container-base py-4 flex justify-between items-center">
+                <a href="#" onclick="showPage('page-hub')" class="flex items-center gap-3" aria-label="A²M Home">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path class="logo-path" d="M4 28L16 4L20 12L16 20L12 12" stroke-width="3" />
                         <path class="logo-path" d="M28 28L16 4L12 12L16 20L20 12" stroke-width="3" />
-                    </svg><span class="text-2xl font-bold text-white">A²M</span></a>
-                <nav class="hidden md:flex items-center space-x-8"><a href="#offering-products"
-                        class="text-zinc-400 hover:text-white">What We Build</a><a href="#differentiators-products"
-                        class="text-zinc-400 hover:text-white">Our Edge</a></nav>
-                <a href="#contact-products" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg">Start a
-                    Project</a>
+                    </svg>
+                    <span class="text-2xl font-bold text-white">A²M</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Products navigation">
+                    <a href="#offering-products" class="nav-link">What We Build</a>
+                    <a href="#differentiators-products" class="nav-link">Our Edge</a>
+                </nav>
+                <a href="#contact-products" class="gradient-bg text-white font-semibold px-5 py-2 rounded-lg" role="button">Start a Project</a>
             </div>
         </header>
-        <main class="pt-24">
-            <section class="py-20 md:py-32 text-center">
+        <main>
+            <section class="py-32 md:py-40 text-center">
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">AI Products & Services</p>
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">From Zero to One, Beyond the Hype
                 </h1>
@@ -537,7 +599,7 @@
                 <span class="text-xl font-bold text-white">A²M</span>
             </a>
             <div class="flex justify-center space-x-6 my-6">
-                <a href="#" class="text-[var(--color-text)] hover:text-white">Twitter</a>
+                <a href="#" class="text-[var(--color-text)] hover:text-white">Bluesky</a>
                 <a href="#" class="text-[var(--color-text)] hover:text-white">LinkedIn</a>
             </div>
             <p class="text-sm text-gray-500">&copy; 2024 A²M. All Rights Reserved.</p>
@@ -561,20 +623,46 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // Optimized event handling with debouncing
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Event delegation for navigation
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('[data-page]')) {
+                e.preventDefault();
+                showPage(e.target.dataset.page);
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             const parallaxBg = document.querySelector('.parallax-bg');
             if (parallaxBg) {
-                window.addEventListener('scroll', () => {
+                const handleScroll = debounce(() => {
                     if (document.getElementById('page-hub').classList.contains('active')) {
                         parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
                     }
-                });
+                }, 16); // ~60fps
+                
+                window.addEventListener('scroll', handleScroll, { passive: true });
             }
+            
             // Set the initial theme correctly
             showPage('page-hub');
 
-            // Initialize Lucide icons
-            lucide.createIcons();
+            // Lazy load Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
 </body>
