@@ -4,7 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A²M | AI Beyond Just ChatGPT</title>
+    
+    <!-- SEO & Meta Optimization -->
+    <title>A²M | AI Beyond Just ChatGPT - Expert AI Products & Consulting</title>
+    <meta name="description" content="A²M delivers sophisticated AI products and elite consulting services. Led by three PhDs with award-winning research, we build custom AI solutions, APIs, and MVPs from zero to one.">
+    <meta name="keywords" content="AI consulting, artificial intelligence products, custom AI development, neuro-symbolic AI, machine learning consulting, AI strategy, MVP development">
+    <meta name="author" content="A²M - AI Beyond Just ChatGPT">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://a2m.ai/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a2m.ai/">
+    <meta property="og:title" content="A²M | AI Beyond Just ChatGPT - Expert AI Products & Consulting">
+    <meta property="og:description" content="A²M delivers sophisticated AI products and elite consulting services. Led by three PhDs with award-winning research, we build custom AI solutions, APIs, and MVPs from zero to one.">
+    <meta property="og:image" content="https://a2m.ai/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="A²M">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://a2m.ai/">
+    <meta name="twitter:title" content="A²M | AI Beyond Just ChatGPT - Expert AI Products & Consulting">
+    <meta name="twitter:description" content="A²M delivers sophisticated AI products and elite consulting services. Led by three PhDs with award-winning research, we build custom AI solutions, APIs, and MVPs from zero to one.">
+    <meta name="twitter:image" content="https://a2m.ai/images/twitter-image.jpg">
+    <meta name="twitter:creator" content="@a2m_ai">
+    <meta name="twitter:site" content="@a2m_ai">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#22d3ee">
+    <meta name="msapplication-TileColor" content="#22d3ee">
+    <meta name="application-name" content="A²M">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://placehold.co data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self';">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="a2m.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,53 +51,91 @@
         /* --- Base and Theming Variables --- */
         :root {
             --font-main: 'Inter', sans-serif;
+
+            /* --- Global Color Tokens --- */
+            /* Grays */
+            --gray-950: #0f172a;
+            --gray-900: #111827;
+            --gray-800: #1e293b;
+            --gray-700: #334155;
+            --gray-600: #64748b;
+            --gray-400: #94a3b8;
+            --gray-300: #d1d5db;
+            --gray-200: #e2e8f0;
+            --gray-100: #f8fafc;
+            --gray-50: #f9fafb;
+            
+            /* Theme-Specific Grays */
+            --consulting-gray-900: #1F2937;
+            --consulting-gray-800: #374151;
+            --consulting-gray-400: #9CA3AF;
+            --consulting-gray-50: #F3F4F6;
+
+            --products-gray-900: #18181b;
+            --products-gray-800: #27272a;
+            --products-gray-700: #3f3f46;
+            --products-gray-400: #a1a1aa;
+            --products-gray-300: #71717a;
+            --products-gray-50: #f4f4f5;
+
+            /* Hub Colors (Teal/Cyan) */
+            --hub-primary: #22d3ee;
+            --hub-secondary: #06b6d4;
+
+            /* Consulting Colors (Purple/Indigo) */
+            --consulting-primary: #6366F1;
+            --consulting-secondary: #9333EA;
+
+            /* Products Colors (Yellow/Orange) */
+            --products-primary: #f59e0b;
+            --products-secondary: #ea580c;
         }
 
         /* Default Theme: Hub (Teal/Cyan) */
         .theme-hub {
-            --color-bg: #0f172a;
-            --color-bg-secondary: #1e293b;
-            --color-bg-tertiary: #334155;
-            --color-text: #94a3b8;
-            --color-text-muted: #64748b;
-            --color-text-heading: #f8fafc;
-            --color-primary: #22d3ee;
-            --color-secondary: #06b6d4;
-            --color-border: #334155;
-            --color-hover: #e2e8f0;
-            --header-bg: rgba(15, 23, 42, 0.8);
+            --color-bg: var(--gray-950);
+            --color-bg-secondary: var(--gray-800);
+            --color-bg-tertiary: var(--gray-700);
+            --color-text: var(--gray-400);
+            --color-text-muted: var(--gray-600);
+            --color-text-heading: var(--gray-100);
+            --color-primary: var(--hub-primary);
+            --color-secondary: var(--hub-secondary);
+            --color-border: var(--gray-700);
+            --color-hover: var(--gray-200);
+            --header-bg: rgba(15, 23, 42, 0.8); /* Corresponds to gray-950 */
             --logo-url: url(#logoGradientHub);
         }
 
         /* Consulting Theme Override (Purple/Indigo) */
         .theme-consulting {
-            --color-bg: #111827;
-            --color-bg-secondary: #1F2937;
-            --color-bg-tertiary: #374151;
-            --color-text: #D1D5DB;
-            --color-text-muted: #9CA3AF;
-            --color-text-heading: #F9FAFB;
-            --color-primary: #6366F1;
-            --color-secondary: #9333EA;
-            --color-border: #374151;
-            --color-hover: #F3F4F6;
-            --header-bg: rgba(17, 24, 39, 0.8);
+            --color-bg: var(--gray-900);
+            --color-bg-secondary: var(--consulting-gray-900);
+            --color-bg-tertiary: var(--consulting-gray-800);
+            --color-text: var(--gray-300);
+            --color-text-muted: var(--consulting-gray-400);
+            --color-text-heading: var(--gray-50);
+            --color-primary: var(--consulting-primary);
+            --color-secondary: var(--consulting-secondary);
+            --color-border: var(--consulting-gray-800);
+            --color-hover: var(--consulting-gray-50);
+            --header-bg: rgba(17, 24, 39, 0.8); /* Corresponds to gray-900 */
             --logo-url: url(#logoGradientConsulting);
         }
 
         /* Products Theme Override (Yellow/Orange) */
         .theme-products {
-            --color-bg: #18181b;
-            --color-bg-secondary: #27272a;
-            --color-bg-tertiary: #3f3f46;
-            --color-text: #a1a1aa;
-            --color-text-muted: #71717a;
-            --color-text-heading: #f9fafb;
-            --color-primary: #f59e0b;
-            --color-secondary: #ea580c;
-            --color-border: #3f3f46;
-            --color-hover: #f4f4f5;
-            --header-bg: rgba(24, 24, 27, 0.8);
+            --color-bg: var(--products-gray-900);
+            --color-bg-secondary: var(--products-gray-800);
+            --color-bg-tertiary: var(--products-gray-700);
+            --color-text: var(--products-gray-400);
+            --color-text-muted: var(--products-gray-300);
+            --color-text-heading: var(--gray-50);
+            --color-primary: var(--products-primary);
+            --color-secondary: var(--products-secondary);
+            --color-border: var(--products-gray-700);
+            --color-hover: var(--products-gray-50);
+            --header-bg: rgba(24, 24, 27, 0.8); /* Corresponds to products-gray-900 */
             --logo-url: url(#logoGradientProducts);
         }
 
@@ -89,6 +163,35 @@
             stroke: var(--logo-url);
         }
 
+        /* Visually hidden but focusable utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .sr-only:focus, .sr-only:active {
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            width: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+            padding: 0.5rem 1rem;
+            background: #fff;
+            color: #000;
+            border-radius: 0.25rem;
+            z-index: 9999;
+        }
+
         .icon-color {
             color: var(--color-primary);
         }
@@ -104,6 +207,90 @@
             right: 0;
             z-index: 50;
             border-bottom: 1px solid var(--color-border);
+        }
+
+        /* --- Visual polish: kinetic hero, micro-interactions, gloss --- */
+        /* Kinetic gradient hero background */
+        .hero-kinetic {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-kinetic .kinetic-bg {
+            position: absolute;
+            inset: -20%; /* bleed to avoid edges during rotation */
+            z-index: -1;
+            background: conic-gradient(from var(--kinetic-angle, 0deg),
+                color-mix(in oklab, var(--color-primary), transparent 60%) 0%,
+                color-mix(in oklab, var(--color-secondary), transparent 60%) 25%,
+                transparent 40%,
+                color-mix(in oklab, var(--color-secondary), transparent 60%) 60%,
+                color-mix(in oklab, var(--color-primary), transparent 60%) 85%,
+                transparent 100%);
+            filter: blur(60px) saturate(120%);
+            opacity: 0.20;
+            transform: rotate(0deg) scale(1.1);
+            pointer-events: none;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg) scale(1.1); }
+            to { transform: rotate(360deg) scale(1.1); }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .hero-kinetic .kinetic-bg { animation: spin-slow 40s linear infinite; }
+        }
+
+        /* SVG micro-interactions: logo stroke draw once */
+        .logo-path {
+            stroke: var(--logo-url);
+            stroke-linecap: round;
+        }
+
+        .logo-path.draw {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: logo-draw 1.2s ease-out forwards;
+        }
+
+        @keyframes logo-draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* CTA sheen effect */
+        #cta-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #cta-button::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            transform: translateX(-120%);
+            pointer-events: none;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            #cta-button:hover::after, #cta-button:focus-visible::after {
+                transition: transform 0.9s cubic-bezier(.25,.8,.25,1);
+                transform: translateX(120%);
+            }
+        }
+
+        /* Subtle 3D gloss canvas */
+        #gloss-canvas {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            width: 140px;
+            height: 140px;
+            opacity: 0.18;
+            filter: blur(0.2px) saturate(110%);
+            pointer-events: none;
+            z-index: 40; /* below header but above content bg */
         }
 
         .nav-link {
@@ -152,6 +339,15 @@
             }
         }
 
+        /* Respect reduced motion preferences */
+        /* @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        } */
+
         /* --- Page Structure --- */
         .page-content {
             display: none;
@@ -161,6 +357,9 @@
             display: block;
             animation: fadeIn 0.5s ease-out;
         }
+
+        /* Avoid skipped targets hiding under fixed header */
+        h1[id] { scroll-margin-top: 96px; }
 
         /* --- Component Styles --- */
         .global-nav a.active {
@@ -177,41 +376,44 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .parallax-container {
-            position: relative;
-            overflow: hidden;
+        /* Error states */
+        .error-message {
+            background-color: #dc2626;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            display: none;
         }
 
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 150%;
-            background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            opacity: 0.1;
+        .error-message.show {
+            display: block;
         }
     </style>
 </head>
 
 <body class="theme-hub">
+    <a href="#hub-title" class="skip-link sr-only">Skip to main content</a>
+    
+    <!-- Error Message Container -->
+    <div id="error-message" class="error-message" role="alert" aria-live="polite">
+        <span id="error-text"></span>
+    </div>
+    
     <!-- SVG Gradients Definition -->
     <svg width="0" height="0" style="position:absolute">
         <defs>
             <linearGradient id="logoGradientHub" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#22d3ee" />
-                <stop offset="100%" stop-color="#06b6d4" />
+                <stop offset="0%" style="stop-color: var(--hub-primary)" />
+                <stop offset="100%" style="stop-color: var(--hub-secondary)" />
             </linearGradient>
             <linearGradient id="logoGradientConsulting" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#6366F1" />
-                <stop offset="100%" stop-color="#9333EA" />
+                <stop offset="0%" style="stop-color: var(--consulting-primary)" />
+                <stop offset="100%" style="stop-color: var(--consulting-secondary)" />
             </linearGradient>
             <linearGradient id="logoGradientProducts" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#f59e0b" />
-                <stop offset="100%" stop-color="#ea580c" />
+                <stop offset="0%" style="stop-color: var(--products-primary)" />
+                <stop offset="100%" style="stop-color: var(--products-secondary)" />
             </linearGradient>
         </defs>
     </svg>
@@ -235,21 +437,21 @@
         </div>
     </header>
 
-    <!-- =================================================================== -->
-    <!-- PAGE 1: HUB                                                         -->
-    <!-- =================================================================== -->
-    <div id="page-hub" class="page-content">
+    <!-- ===================================================================  -->
+    <!-- PAGE 1: HUB                                                          -->
+    <!-- ===================================================================  -->
+    <!-- Focus target for skip link -->
+    <div id="main-content" tabindex="-1" class="sr-only"></div>
+    <div id="page-hub" class="page-content" tabindex="-1" aria-hidden="true">
         <main>
-            <section class="py-32 md:py-40 parallax-container">
-                <div class="parallax-bg"></div>
-                <div class="container mx-auto px-6 text-center relative z-10">
-                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 gradient-text">AI Beyond Just
-                        ChatGPT</h1>
-                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">We build sophisticated,
-                        first-principle AI products and provide elite consulting for your most complex challenges.</p>
-                </div>
+            <section class="py-32 md:py-40 text-center hero-kinetic">
+                <div class="kinetic-bg" aria-hidden="true"></div>
+                <h1 id="hub-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 gradient-text">AI Beyond Just
+                    ChatGPT</h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">We build sophisticated,
+                    first-principle AI products and provide elite consulting for your most complex challenges.</p>
             </section>
-            <section id="offering-hub" class="py-20 md:py-24 bg-slate-900">
+            <section id="offering-hub" class="py-20 md:py-24 bg-slate-800">
                 <div class="container mx-auto px-6">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How can we help you?</h2>
@@ -374,14 +576,15 @@
         </main>
     </div>
 
-    <!-- =================================================================== -->
-    <!-- PAGE 2: CONSULTING                                                  -->
-    <!-- =================================================================== -->
-    <div id="page-consulting" class="page-content">
+    <!-- ===================================================================  -->
+    <!-- PAGE 2: CONSULTING                                                   -->
+    <!-- ===================================================================  -->
+    <div id="page-consulting" class="page-content" tabindex="-1" aria-hidden="true">
         <main>
-            <section class="py-32 md:py-40 text-center">
+            <section class="py-32 md:py-40 text-center hero-kinetic">
+                <div class="kinetic-bg" aria-hidden="true"></div>
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">Boutique Consulting</p>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">Strategic AI & Product Leadership
+                <h1 id="consulting-title" class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">Strategic AI & Product Leadership
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">From C-Suite strategy to product team
                     execution, we provide the expert guidance to navigate digital transformation.</p>
@@ -476,14 +679,15 @@
         </main>
     </div>
 
-    <!-- =================================================================== -->
-    <!-- PAGE 3: PRODUCTS                                                    -->
-    <!-- =================================================================== -->
-    <div id="page-products" class="page-content">
+    <!-- ===================================================================  -->
+    <!-- PAGE 3: PRODUCTS                                                     -->
+    <!-- ===================================================================  -->
+    <div id="page-products" class="page-content" tabindex="-1" aria-hidden="true">
         <main>
-            <section class="py-32 md:py-40 text-center">
+            <section class="py-32 md:py-40 text-center hero-kinetic">
+                <div class="kinetic-bg" aria-hidden="true"></div>
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">AI Products & Services</p>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">From Zero to One, Beyond the Hype
+                <h1 id="products-title" class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">From Zero to One, Beyond the Hype
                 </h1>
                 <p class="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto">We specialize in the 0→1 development of
                     sophisticated AI products, turning complex ideas into testable prototypes and powerful MVPs.</p>
@@ -578,124 +782,487 @@
     </footer>
 
     <script>
-        // Hash routing configuration
-        const routes = {
-            'hub': 'page-hub',
-            'products': 'page-products', 
-            'consulting': 'page-consulting'
-        };
+        // Application Module - Prevents Global Scope Pollution
+        const A2MApp = (() => {
+            'use strict';
 
-        const pageConfig = {
-            'page-hub': {
-                theme: 'theme-hub',
-                ctaText: 'Contact Us',
-                ctaHref: '#contact'
-            },
-            'page-products': {
-                theme: 'theme-products',
-                ctaText: 'Start a Project',
-                ctaHref: '#contact'
-            },
-            'page-consulting': {
-                theme: 'theme-consulting',
-                ctaText: 'Book a Consultation',
-                ctaHref: '#contact'
-            }
-        };
-
-        function showPage(pageId) {
-            // Handle both hash names and page IDs
-            const actualPageId = pageId.startsWith('page-') ? pageId : routes[pageId] || 'page-hub';
-            
-            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
-            document.getElementById(actualPageId)?.classList.add('active');
-
-            const config = pageConfig[actualPageId];
-            if (config) {
-                // Update theme
-                const body = document.body;
-                body.classList.remove('theme-hub', 'theme-consulting', 'theme-products');
-                body.classList.add(config.theme);
-
-                // Update CTA button
-                const ctaButton = document.getElementById('cta-button');
-                if (ctaButton) {
-                    ctaButton.textContent = config.ctaText;
-                    ctaButton.setAttribute('href', config.ctaHref);
-                }
-
-                // Update navigation active states
-                updateNavigation(pageId);
-            }
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function updateNavigation(currentPage) {
-            // Remove active class from all nav links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active class to current page link
-            const activeLink = document.querySelector(`[data-page="${currentPage}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-        }
-
-        function handleHashChange() {
-            const hash = window.location.hash.slice(1) || 'hub'; // Remove # and default to hub
-            showPage(hash);
-        }
-
-        function navigateToPage(pageName) {
-            window.location.hash = pageName;
-        }
-
-        // Optimized event handling with debouncing
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+            // Private variables
+            const routes = {
+                'hub': 'page-hub',
+                'products': 'page-products', 
+                'consulting': 'page-consulting'
             };
-        }
 
-        // Event delegation for navigation
-        document.addEventListener('click', (e) => {
-            if (e.target.matches('[data-page]')) {
-                e.preventDefault();
-                navigateToPage(e.target.dataset.page);
-            }
-        });
+            const pageConfig = {
+                'page-hub': {
+                    theme: 'theme-hub',
+                    ctaText: 'Talk to Us',
+                    ctaHref: '#contact'
+                },
+                'page-products': {
+                    theme: 'theme-products',
+                    ctaText: 'Talk to Us',
+                    ctaHref: '#contact'
+                },
+                'page-consulting': {
+                    theme: 'theme-consulting',
+                    ctaText: 'Talk to Us',
+                    ctaHref: '#contact'
+                }
+            };
 
-        // Hash change listener
-        window.addEventListener('hashchange', handleHashChange);
-        window.addEventListener('load', handleHashChange);
+            let hasInitialized = false;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const parallaxBg = document.querySelector('.parallax-bg');
-            if (parallaxBg) {
-                const handleScroll = debounce(() => {
-                    if (document.getElementById('page-hub').classList.contains('active')) {
-                        parallaxBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
+            // Error handling utilities
+            const ErrorHandler = {
+                log(error, context = '') {
+                    console.error(`[A2MApp Error] ${context}:`, error);
+                },
+
+                show(message, context = 'Application Error') {
+                    try {
+                        const errorContainer = document.getElementById('error-message');
+                        const errorText = document.getElementById('error-text');
+                        
+                        if (errorContainer && errorText) {
+                            errorText.textContent = `${context}: ${message}`;
+                            errorContainer.classList.add('show');
+                            
+                            // Auto-hide after 5 seconds
+                            setTimeout(() => {
+                                errorContainer.classList.remove('show');
+                            }, 5000);
+                        }
+                    } catch (e) {
+                        console.error('Failed to show error message:', e);
                     }
-                }, 16); // ~60fps
-                
-                window.addEventListener('scroll', handleScroll, { passive: true });
-            }
-            
-            // Handle initial page load
-            handleHashChange();
+                },
 
-            // Lazy load Lucide icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+                hide() {
+                    try {
+                        const errorContainer = document.getElementById('error-message');
+                        if (errorContainer) {
+                            errorContainer.classList.remove('show');
+                        }
+                    } catch (e) {
+                        console.error('Failed to hide error message:', e);
+                    }
+                }
+            };
+
+            // Page management functions
+            function showPage(pageId, options = {}) {
+                try {
+                    ErrorHandler.hide(); // Hide any existing errors
+                    
+                    const { focus = true, smoothScroll = true } = options;
+                    // Handle both hash names and page IDs
+                    const actualPageId = pageId.startsWith('page-') ? pageId : routes[pageId];
+                    
+                    if (!actualPageId) {
+                        throw new Error(`Invalid page identifier: ${pageId}`);
+                    }
+
+                    // Verify page exists
+                    const activePage = document.getElementById(actualPageId);
+                    if (!activePage) {
+                        throw new Error(`Page element not found: ${actualPageId}`);
+                    }
+
+                    // Toggle active class
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        if (page) page.classList.remove('active');
+                    });
+                    
+                    activePage.classList.add('active');
+
+                    // Manage aria-hidden on page containers
+                    document.querySelectorAll('.page-content').forEach(page => {
+                        if (page) {
+                            page.setAttribute('aria-hidden', page.id === actualPageId ? 'false' : 'true');
+                        }
+                    });
+
+                    const config = pageConfig[actualPageId];
+                    if (config) {
+                        // Update theme
+                        updateTheme(config.theme);
+                        
+                        // Update CTA button
+                        updateCTAButton(config.ctaText, config.ctaHref);
+                        
+                        // Update navigation active states
+                        updateNavigation(pageId);
+                    }
+
+                    // Move focus to the first heading of the active page (skip on initial load)
+                    if (focus) {
+                        focusPageHeading(activePage);
+                    }
+
+                    // Scroll to top
+                    try {
+                        window.scrollTo({ top: 0, behavior: smoothScroll ? 'smooth' : 'auto' });
+                    } catch (e) {
+                        // Fallback for older browsers
+                        window.scrollTo(0, 0);
+                    }
+
+                } catch (error) {
+                    ErrorHandler.log(error, 'showPage');
+                    ErrorHandler.show(error.message, 'Navigation Error');
+                    
+                    // Fallback to hub page if current page failed
+                    if (pageId !== 'hub') {
+                        showPage('hub', { focus: false, smoothScroll: false });
+                    }
+                }
+            }
+
+            // Animate the logo stroke once on first paint (respects reduced motion)
+            function setupLogoDrawOnce() {
+                try {
+                    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+                    if (mql.matches) return; // do nothing if user prefers less motion
+                    const logoPaths = document.querySelectorAll('.logo-path');
+                    if (!logoPaths.length) return;
+                    // Add class after a tick to ensure layout is ready
+                    requestAnimationFrame(() => {
+                        logoPaths.forEach(p => p.classList.add('draw'));
+                        // Remove the class after animation to avoid retriggering on theme swaps
+                        setTimeout(() => logoPaths.forEach(p => p.classList.remove('draw')), 1600);
+                    });
+                } catch (error) {
+                    ErrorHandler.log(error, 'setupLogoDrawOnce');
+                }
+            }
+
+            // Create and animate a subtle gloss canvas in the corner
+            function setupGlossCanvas() {
+                try {
+                    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+                    if (mql.matches) return; // respect reduced motion
+
+                    let canvas = document.getElementById('gloss-canvas');
+                    if (!canvas) {
+                        canvas = document.createElement('canvas');
+                        canvas.id = 'gloss-canvas';
+                        canvas.width = 140;
+                        canvas.height = 140;
+                        document.body.appendChild(canvas);
+                    }
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) return;
+
+                    let rafId = 0;
+                    let t0 = performance.now();
+
+                    function draw(t) {
+                        const dt = (t - t0) / 1000; // seconds
+                        const w = canvas.width, h = canvas.height;
+                        // Clear
+                        ctx.clearRect(0, 0, w, h);
+                        // Background gradient matching theme hues softly
+                        const bg = ctx.createRadialGradient(w*0.5, h*0.5, 10, w*0.5, h*0.5, Math.max(w,h)*0.6);
+                        // Use two stops; lighter center
+                        bg.addColorStop(0, 'rgba(255,255,255,0.12)');
+                        bg.addColorStop(1, 'rgba(0,0,0,0)');
+                        ctx.fillStyle = bg;
+                        ctx.fillRect(0, 0, w, h);
+
+                        // Moving light sweep
+                        const angle = (dt * 0.4) % (Math.PI * 2);
+                        const cx = w/2 + Math.cos(angle) * w*0.15;
+                        const cy = h/2 + Math.sin(angle) * h*0.15;
+                        const lg = ctx.createRadialGradient(cx, cy, 5, cx, cy, 50);
+                        lg.addColorStop(0, 'rgba(255,255,255,0.35)');
+                        lg.addColorStop(1, 'rgba(255,255,255,0)');
+                        ctx.globalCompositeOperation = 'lighter';
+                        ctx.fillStyle = lg;
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, 60, 0, Math.PI*2);
+                        ctx.fill();
+                        ctx.globalCompositeOperation = 'source-over';
+
+                        rafId = requestAnimationFrame(draw);
+                    }
+
+                    function onVisibilityChange() {
+                        if (document.hidden) {
+                            cancelAnimationFrame(rafId);
+                        } else {
+                            t0 = performance.now();
+                            rafId = requestAnimationFrame(draw);
+                        }
+                    }
+
+                    document.addEventListener('visibilitychange', onVisibilityChange);
+                    rafId = requestAnimationFrame(draw);
+                } catch (error) {
+                    ErrorHandler.log(error, 'setupGlossCanvas');
+                }
+            }
+
+            function updateTheme(newTheme) {
+                try {
+                    const body = document.body;
+                    if (!body) {
+                        throw new Error('Body element not found');
+                    }
+                    
+                    body.classList.remove('theme-hub', 'theme-consulting', 'theme-products');
+                    body.classList.add(newTheme);
+                } catch (error) {
+                    ErrorHandler.log(error, 'updateTheme');
+                }
+            }
+
+            function updateCTAButton(text, href) {
+                try {
+                    const ctaButton = document.getElementById('cta-button');
+                    if (ctaButton) {
+                        ctaButton.textContent = text;
+                        ctaButton.setAttribute('href', href);
+                    }
+                } catch (error) {
+                    ErrorHandler.log(error, 'updateCTAButton');
+                }
+            }
+
+            function updateNavigation(currentPage) {
+                try {
+                    // Remove active state and aria-current from all nav links
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link) {
+                            link.classList.remove('active');
+                            link.removeAttribute('aria-current');
+                        }
+                    });
+
+                    // Add active class and aria-current to current page link
+                    const activeLink = document.querySelector(`[data-page="${currentPage}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        activeLink.setAttribute('aria-current', 'page');
+                    }
+                } catch (error) {
+                    ErrorHandler.log(error, 'updateNavigation');
+                }
+            }
+
+            function focusPageHeading(activePage) {
+                try {
+                    const firstHeading = activePage.querySelector('h1');
+                    if (firstHeading) {
+                        if (!firstHeading.hasAttribute('tabindex')) {
+                            firstHeading.setAttribute('tabindex', '-1');
+                        }
+                        firstHeading.focus();
+                    }
+                } catch (error) {
+                    ErrorHandler.log(error, 'focusPageHeading');
+                }
+            }
+
+            function handleHashChange() {
+                try {
+                    const hash = window.location.hash.slice(1) || 'hub'; // Remove # and default to hub
+                    showPage(hash, { focus: hasInitialized, smoothScroll: hasInitialized });
+                    if (!hasInitialized) hasInitialized = true;
+                } catch (error) {
+                    ErrorHandler.log(error, 'handleHashChange');
+                    ErrorHandler.show('Failed to navigate to page', 'Navigation Error');
+                }
+            }
+
+            function navigateToPage(pageName) {
+                try {
+                    if (!pageName || typeof pageName !== 'string') {
+                        throw new Error('Invalid page name provided');
+                    }
+                    window.location.hash = pageName;
+                } catch (error) {
+                    ErrorHandler.log(error, 'navigateToPage');
+                    ErrorHandler.show('Failed to navigate to page', 'Navigation Error');
+                }
+            }
+
+            function setupEventListeners() {
+                try {
+                    // Event delegation for navigation
+                    document.addEventListener('click', (e) => {
+                        try {
+                            if (e.target && e.target.matches('[data-page]')) {
+                                e.preventDefault();
+                                const pageName = e.target.dataset.page;
+                                if (pageName) {
+                                    navigateToPage(pageName);
+                                }
+                            }
+                        } catch (error) {
+                            ErrorHandler.log(error, 'navigation click handler');
+                        }
+                    });
+
+                    // Hash change listener
+                    window.addEventListener('hashchange', handleHashChange);
+
+                    // Error event listener
+                    window.addEventListener('error', (e) => {
+                        ErrorHandler.log(e.error, 'Global error handler');
+                    });
+
+                    // Unhandled promise rejection listener
+                    window.addEventListener('unhandledrejection', (e) => {
+                        ErrorHandler.log(e.reason, 'Unhandled promise rejection');
+                    });
+
+                    // Keep content offset correct when viewport changes
+                    window.addEventListener('resize', applyHeaderOffset);
+
+                } catch (error) {
+                    ErrorHandler.log(error, 'setupEventListeners');
+                }
+            }
+
+            function setupSkipLink() {
+                try {
+                    // Make skip link reliably reachable as first tab stop on macOS default settings
+                    const skipLink = document.querySelector('.skip-link');
+                    if (!skipLink) return;
+
+                    // When the first Tab is pressed, move focus to skip link (covers Safari/Chrome on macOS)
+                    let firstTabHandled = false;
+                    document.addEventListener('keydown', (e) => {
+                        try {
+                            if (e.key !== 'Tab' || e.shiftKey || firstTabHandled) return;
+                            const ae = document.activeElement;
+                            const isAtDocumentStart = !ae || ae === document.body || ae === document.documentElement;
+                            if (isAtDocumentStart) {
+                                firstTabHandled = true;
+                                e.preventDefault();
+                                skipLink.focus();
+                            }
+                        } catch (error) {
+                            ErrorHandler.log(error, 'skip link keydown handler');
+                        }
+                    });
+
+                    // On activation, focus the target headline robustly
+                    skipLink.addEventListener('click', (e) => {
+                        try {
+                            const href = skipLink.getAttribute('href');
+                            if (href && href.startsWith('#')) {
+                                const target = document.getElementById(href.slice(1));
+                                if (target) {
+                                    e.preventDefault();
+                                    // Ensure container/page is visible
+                                    const pageId = 'hub';
+                                    showPage(pageId, { focus: false, smoothScroll: true });
+                                    // Temporarily make target focusable if needed and focus it
+                                    const hadTabindex = target.hasAttribute('tabindex');
+                                    if (!hadTabindex) target.setAttribute('tabindex', '-1');
+                                    target.focus();
+                                    if (!hadTabindex) target.removeAttribute('tabindex');
+                                }
+                            }
+                        } catch (error) {
+                            ErrorHandler.log(error, 'skip link click handler');
+                        }
+                    });
+                } catch (error) {
+                    ErrorHandler.log(error, 'setupSkipLink');
+                }
+            }
+
+            function initializeLucideIcons() {
+                try {
+                    // Lazy load Lucide icons
+                    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                        lucide.createIcons();
+                    } else {
+                        // Retry after a short delay if lucide hasn't loaded yet
+                        setTimeout(() => {
+                            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                                lucide.createIcons();
+                            }
+                        }, 100);
+                    }
+                } catch (error) {
+                    ErrorHandler.log(error, 'initializeLucideIcons');
+                }
+            }
+
+            // Measure fixed header height and offset page content accordingly
+            function applyHeaderOffset() {
+                try {
+                    const header = document.getElementById('main-header');
+                    const mains = document.querySelectorAll('.page-content > main');
+                    if (!header || !mains.length) return;
+                    const h = header.getBoundingClientRect().height;
+                    mains.forEach((m) => { m.style.paddingTop = h + 'px'; });
+                } catch (error) {
+                    ErrorHandler.log(error, 'applyHeaderOffset');
+                }
+            }
+
+            // Observe header size changes and re-apply offset automatically
+            function setupHeaderObserver() {
+                try {
+                    const header = document.getElementById('main-header');
+                    if (!header) return;
+                    if (typeof ResizeObserver === 'undefined') {
+                        // Fallback: at least apply once
+                        applyHeaderOffset();
+                        return;
+                    }
+                    const ro = new ResizeObserver(() => {
+                        applyHeaderOffset();
+                    });
+                    ro.observe(header);
+                } catch (error) {
+                    ErrorHandler.log(error, 'setupHeaderObserver');
+                }
+            }
+
+            // Public API
+            function init() {
+                try {
+                    setupEventListeners();
+                    setupSkipLink();
+                    initializeLucideIcons();
+                    
+                    // Handle initial page load (single invocation)
+                    handleHashChange();
+                    // Ensure content is visually below the fixed header
+                    applyHeaderOffset();
+                    // React to header height changes (fonts, layout, etc.)
+                    setupHeaderObserver();
+                    // Visual polish hooks
+                    setupLogoDrawOnce();
+                    setupGlossCanvas();
+                    
+                } catch (error) {
+                    ErrorHandler.log(error, 'init');
+                    ErrorHandler.show('Application failed to initialize properly', 'Initialization Error');
+                }
+            }
+
+            // Return public interface
+            return {
+                init,
+                showPage,
+                navigateToPage,
+                ErrorHandler
+            };
+        })();
+
+        // Initialize the application when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                A2MApp.init();
+            } catch (error) {
+                console.error('Failed to initialize A2M application:', error);
             }
         });
     </script>
