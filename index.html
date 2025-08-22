@@ -143,7 +143,8 @@
             font-family: var(--font-main);
             background-color: var(--color-bg);
             color: var(--color-text);
-            transition: background-color 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
         }
 
         /* --- Utility Classes --- */
@@ -161,6 +162,41 @@
 
         .logo-path {
             stroke: var(--logo-url);
+        }
+
+        /* --- Utility: Glassy/translucent surfaces --- */
+        /* Usage: add class="glass" (or modifiers) to any container to let the kinetic bg subtly shine through */
+        .glass {
+            /* Theme-aware translucent fill */
+            background-color: color-mix(in oklab, var(--color-bg-secondary), transparent 35%);
+            /* Soft separation line using theme border tone */
+            border: 1px solid color-mix(in oklab, var(--color-border), transparent 55%);
+            /* Depth and legibility */
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+            /* Frosted effect */
+            -webkit-backdrop-filter: blur(12px) saturate(130%);
+            backdrop-filter: blur(12px) saturate(130%);
+        }
+
+        /* Slightly more transparent */
+        .glass--light {
+            background-color: color-mix(in oklab, var(--color-bg-secondary), transparent 50%);
+            border-color: color-mix(in oklab, var(--color-border), transparent 65%);
+        }
+
+        /* Slightly more opaque / stronger separation */
+        .glass--strong {
+            background-color: color-mix(in oklab, var(--color-bg-secondary), transparent 20%);
+            border-color: color-mix(in oklab, var(--color-border), transparent 45%);
+            box-shadow: 0 3px 18px rgba(0, 0, 0, 0.16);
+        }
+
+        /* Graceful fallback if backdrop-filter unsupported: keep translucent bg and border */
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            .glass, .glass--light, .glass--strong {
+                -webkit-backdrop-filter: none;
+                backdrop-filter: none;
+            }
         }
 
         /* Visually hidden but focusable utility */
@@ -211,13 +247,8 @@
 
         /* --- Visual polish: kinetic hero, micro-interactions, gloss --- */
         /* Kinetic gradient hero background */
-        .hero-kinetic {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-kinetic .kinetic-bg {
-            position: absolute;
+        .kinetic-bg {
+            position: fixed;
             inset: -20%; /* bleed to avoid edges during rotation */
             z-index: -1;
             background: conic-gradient(from var(--kinetic-angle, 0deg),
@@ -228,7 +259,7 @@
                 color-mix(in oklab, var(--color-primary), transparent 60%) 85%,
                 transparent 100%);
             filter: blur(60px) saturate(120%);
-            opacity: 0.20;
+            opacity: 0.3;
             transform: rotate(0deg) scale(1.1);
             pointer-events: none;
         }
@@ -237,11 +268,6 @@
             from { transform: rotate(0deg) scale(1.1); }
             to { transform: rotate(360deg) scale(1.1); }
         }
-
-        /* TODO: comment out for testing (because I have reduced motion active), re-enable for production. */
-        /* @media (prefers-reduced-motion: no-preference) { */
-            .hero-kinetic .kinetic-bg { animation: spin-slow 40s linear infinite; }
-        /* } */
 
         /* SVG micro-interactions: logo stroke draw once */
         .logo-path {
@@ -296,8 +322,8 @@
         }
 
         .card-base {
-            background: var(--color-bg-secondary);
-            border: 1px solid var(--color-border);
+            /* background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border); */
             border-radius: 0.5rem;
             padding: 2rem;
         }
@@ -387,6 +413,7 @@
 
 <body class="theme-hub">
     <a href="#hub-title" class="skip-link sr-only">Skip to main content</a>
+    <div class="kinetic-bg" aria-hidden="true"></div>
     
     <!-- Error Message Container -->
     <div id="error-message" class="error-message" role="alert" aria-live="polite">
@@ -437,14 +464,13 @@
     <div id="main-content" tabindex="-1" class="sr-only"></div>
     <div id="page-hub" class="page-content" tabindex="-1" aria-hidden="true">
         <main>
-            <section class="py-32 md:py-40 text-center hero-kinetic">
-                <div class="kinetic-bg" aria-hidden="true"></div>
+            <section class="px-6 py-32 md:py-40 text-center">
                 <h1 id="hub-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 gradient-text">AI Beyond Just
                     ChatGPT</h1>
                 <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">We build sophisticated,
                     first-principle AI products and provide elite consulting for your most complex challenges.</p>
             </section>
-            <section id="offering-hub" class="py-20 md:py-24 bg-slate-800">
+            <section id="offering-hub" class="py-20 md:py-24 glass">
                 <div class="container mx-auto px-6">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How can we help you?</h2>
@@ -489,7 +515,7 @@
                         </p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <article class="card-base">
+                        <article class="card-base glass">
                             <div class="mb-4"><i data-lucide="shield" class="icon-color"
                                     style="width: 32px; height: 32px;" aria-hidden="true"></i></div>
                             <h3 class="font-bold text-xl text-white mb-2">PhD-Level AI Expertise</h3>
@@ -497,14 +523,14 @@
                                 conferences. We understand AI at the deepest level, not just surface-level
                                 implementations.</p>
                         </article>
-                        <article class="card-base">
+                        <article class="card-base glass">
                             <div class="mb-4"><i data-lucide="wrench" class="icon-color"
                                     style="width: 32px; height: 32px;" aria-hidden="true"></i></div>
                             <h3 class="font-bold text-xl text-white mb-2">Beyond Chatbots & APIs</h3>
                             <p class="text-[var(--color-text)]">While others build more chatbots, we tackle neuro-symbolic AI,
                                 custom models, and complex problems that require true scientific understanding.</p>
                         </article>
-                        <article class="card-base">
+                        <article class="card-base glass">
                             <div class="mb-4"><i data-lucide="package" class="icon-color"
                                     style="width: 32px; height: 32px;" aria-hidden="true"></i></div>
                             <h3 class="font-bold text-xl text-white mb-2">Academic Rigor Meets Product Excellence</h3>
@@ -514,7 +540,7 @@
                     </div>
                 </div>
             </section>
-            <section id="team-hub" class="py-20 md:py-24 bg-slate-800">
+            <section id="team-hub" class="py-20 md:py-24 glass">
                 <div class="container mx-auto px-6">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Founded by <span
@@ -574,15 +600,14 @@
     <!-- ===================================================================  -->
     <div id="page-consulting" class="page-content" tabindex="-1" aria-hidden="true">
         <main>
-            <section class="py-32 md:py-40 text-center hero-kinetic">
-                <div class="kinetic-bg" aria-hidden="true"></div>
+            <section class="px-6 py-32 md:py-40 text-center">
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">Boutique Consulting</p>
                 <h1 id="consulting-title" class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">Strategic AI & Product Leadership
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">From C-Suite strategy to product team
                     execution, we provide the expert guidance to navigate digital transformation.</p>
             </section>
-            <section id="services-consulting" class="py-20 md:py-24 bg-gray-800">
+            <section id="services-consulting" class="py-20 md:py-24 glass">
                 <div class="container mx-auto px-6">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Consulting Services</h2>
@@ -660,7 +685,7 @@
                     </div>
                 </div>
             </section>
-            <section id="contact" class="py-20 md:py-24 bg-gray-800">
+            <section id="contact" class="py-20 md:py-24 glass">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's shape your strategy.</h2>
                     <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Schedule a complimentary consultation to
@@ -677,15 +702,14 @@
     <!-- ===================================================================  -->
     <div id="page-products" class="page-content" tabindex="-1" aria-hidden="true">
         <main>
-            <section class="py-32 md:py-40 text-center hero-kinetic">
-                <div class="kinetic-bg" aria-hidden="true"></div>
+            <section class="px-6 py-32 md:py-40 text-center">
                 <p class="text-white font-semibold uppercase tracking-wider mb-4">AI Products & Services</p>
                 <h1 id="products-title" class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">From Zero to One, Beyond the Hype
                 </h1>
                 <p class="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto">We specialize in the 0→1 development of
                     sophisticated AI products, turning complex ideas into testable prototypes and powerful MVPs.</p>
             </section>
-            <section id="offering-products" class="py-20 md:py-24 bg-zinc-800">
+            <section id="offering-products" class="py-20 md:py-24 glass">
                 <div class="container mx-auto px-6">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What We Build</h2>
@@ -721,22 +745,22 @@
                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Technical Edge</h2>
                     </div>
                     <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                        <div class="card-base glass">
                             <h3 class="font-bold text-xl text-white mb-2 gradient-text">Neuro-Symbolic AI</h3>
                             <p class="text-zinc-400">Combining LLMs with knowledge graphs to create systems that can
                                 reason and explain their conclusions.</p>
                         </div>
-                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                        <div class="card-base glass">
                             <h3 class="font-bold text-xl text-white mb-2 gradient-text">First-Principle Models</h3>
                             <p class="text-zinc-400">We build from a deeper understanding, resulting in more accurate,
                                 robust, and defensible models.</p>
                         </div>
-                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                        <div class="card-base glass">
                             <h3 class="font-bold text-xl text-white mb-2 gradient-text">Complex Problem Solving</h3>
                             <p class="text-zinc-400">Our expertise is in tackling novel challenges that don't have
                                 off-the-shelf solutions.</p>
                         </div>
-                        <div class="bg-zinc-800 p-6 rounded-lg border border-zinc-700">
+                        <div class="card-base glass">
                             <h3 class="font-bold text-xl text-white mb-2 gradient-text">Prototype to MVP</h3>
                             <p class="text-zinc-400">We manage the entire pre-coding lifecycle: from ideation to a
                                 testable prototype ready for engineering.</p>
@@ -744,7 +768,7 @@
                     </div>
                 </div>
             </section>
-            <section id="contact" class="py-20 md:py-24 bg-zinc-800">
+            <section id="contact" class="py-20 md:py-24 glass">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Have an idea for an AI product?</h2>
                     <p class="text-zinc-400 text-lg max-w-2xl mx-auto mb-10">Let's talk. We can help you validate,
@@ -1049,8 +1073,6 @@
                 setupLogoMaskedGloss();
             }
 
-            
-
             function updateTheme(newTheme) {
                 try {
                     const body = document.body;
@@ -1273,6 +1295,54 @@
                 }
             }
 
+            // Scroll-driven kinetic background (position -> 0..360deg) + gentle idle drift
+            function setupKineticScrollMotion() {
+                try {
+                    const bg = document.querySelector('.kinetic-bg');
+                    if (!bg) return;
+
+                    // Scroll progress in [0,1]
+                    let progress = 0;
+                    const computeProgress = () => {
+                        const doc = document.documentElement;
+                        const maxScroll = Math.max(1, (doc.scrollHeight - window.innerHeight));
+                        const y = Math.min(maxScroll, Math.max(0, window.scrollY || 0));
+                        return y / maxScroll;
+                    };
+                    const updateProgress = () => { progress = computeProgress(); };
+
+                    // Gentle drift state (degrees) and speed (deg/sec)
+                    let drift = 0;
+                    const driftSpeed = 1.0; // slow continuous rotation
+                    let lastTs = performance.now();
+
+                    const tick = (ts) => {
+                        try {
+                            const dt = Math.max(0, (ts - lastTs) / 1000);
+                            lastTs = ts;
+                            drift += driftSpeed * dt;
+                            // Combine scroll-mapped angle with drift
+                            const angle = (progress * 360) + drift;
+                            // Keep angle bounded for numeric stability
+                            const wrapped = ((angle % 360) + 360) % 360;
+                            bg.style.setProperty('--kinetic-angle', wrapped.toFixed(2) + 'deg');
+                        } catch (e) {
+                            ErrorHandler.log(e, 'kinetic tick');
+                        } finally {
+                            requestAnimationFrame(tick);
+                        }
+                    };
+
+                    // Initialize and listeners
+                    updateProgress();
+                    requestAnimationFrame(tick);
+                    window.addEventListener('scroll', updateProgress, { passive: true });
+                    window.addEventListener('resize', updateProgress, { passive: true });
+                } catch (error) {
+                    ErrorHandler.log(error, 'setupKineticScrollMotion');
+                }
+            }
+
             // Public API
             function init() {
                 try {
@@ -1290,6 +1360,8 @@
                     setupHeaderObserver();
                     // Handle initial page load (single invocation)
                     handleHashChange();
+                    // Start scroll-driven kinetic background
+                    setupKineticScrollMotion();
                     // Visual polish hooks (disable stroke-draw on load to avoid logo build-up)
                     // setupLogoDrawOnce();
                     // Trigger moments: re-run sheen on logo hover/focus
