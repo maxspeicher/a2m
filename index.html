@@ -1105,7 +1105,7 @@
                         if (!firstHeading.hasAttribute('tabindex')) {
                             firstHeading.setAttribute('tabindex', '-1');
                         }
-                        firstHeading.focus();
+                        firstHeading.focus({ preventScroll: true });
                     }
                 } catch (error) {
                     ErrorHandler.log(error, 'focusPageHeading');
@@ -1210,7 +1210,7 @@
                                     // Temporarily make target focusable if needed and focus it
                                     const hadTabindex = target.hasAttribute('tabindex');
                                     if (!hadTabindex) target.setAttribute('tabindex', '-1');
-                                    target.focus();
+                                    target.focus({ preventScroll: true });
                                     if (!hadTabindex) target.removeAttribute('tabindex');
                                 }
                             }
