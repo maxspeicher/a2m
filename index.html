@@ -1335,6 +1335,21 @@
 
                     // Initialize and listeners
                     updateProgress();
+
+                    // Reduced motion guard (commented out for testing; enable for production)
+                    // const prefersNoMotion = !window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+                    // if (prefersNoMotion) {
+                    //     // Disable idle drift; keep scroll-mapped angle only
+                    //     // Do an initial paint and rely on scroll/resize updates
+                    //     const angle = (progress * 360);
+                    //     const wrapped = ((angle % 360) + 360) % 360;
+                    //     bg.style.setProperty('--kinetic-angle', wrapped.toFixed(2) + 'deg');
+                    // } else {
+                    //     // Allow gentle continuous drift
+                    //     requestAnimationFrame(tick);
+                    // }
+
+                    // Testing mode: always enable drift
                     requestAnimationFrame(tick);
                     window.addEventListener('scroll', updateProgress, { passive: true });
                     window.addEventListener('resize', updateProgress, { passive: true });
